@@ -47,3 +47,4 @@ build/
 
 ### Rasa
 .rasa
+story_graph.dot

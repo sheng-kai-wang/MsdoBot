@@ -1,0 +1,43 @@
+version: "3.0"
+
+services:
+  rasa:
+    image: msdobot/rasa:v1
+    container_name: msdobot-rasa
+    restart: always
+    networks: ["msdobot"]
+    user: root
+    ports:
+      - "5005:5005"
+    # volumes:
+    # - "./:/app/"
+    depends_on:
+      - action_server
+    command:
+      - run
+      - --model
+      - /usr/src/app/models/msdobot-rasa-v1.tar.gz
+      - --endpoints
+      - /usr/src/app/endpoints.yml
+      - -vv
+      - --enable-api
+
+  action_server:
+    image: msdobot/action:v1
+    container_name: msdobot-action
+    restart: always
+    networks: ["msdobot"]
+    ports:
+      - "5055:5055"
+    volumes:
+      - "./actions:/bot/actions"
+    command:
+      - start
+      - --actions
+      - actions
+      - -vv
+
+# networks: { msdobot: {} }
+networks:
+  msdobot:
+    name: msdobot

@@ -1,0 +1,74 @@
+version: "3.1"
+
+stories:
+  - story: use restler
+    steps:
+      - intent: check-restler
+      - action: action_extract
+      - action: utter_restler
+
+  - story: check actuator health
+    steps:
+      - intent: check-actuator-health
+      - action: action_extract
+      - action: utter_actuator_health
+
+  - story: check actuator info
+    steps:
+      - intent: check-actuator-info
+      - action: action_extract
+      - action: utter_actuator_info
+
+  - story: check swagger api list
+    steps:
+      - intent: check-swagger-api-list
+      - action: action_extract
+      - action: utter_swagger
+
+  - story: check service info
+    steps:
+      - intent: service-basic-info
+      - action: action_extract
+      - action: utter_service_info
+
+  - story: jenkins build number
+    steps:
+      - intent: ask_jenkins_job_build_number
+      - action: action_extract
+      - action: utter_jenkins_build
+
+  - story: jenkins health report
+    steps:
+      - intent: ask_job_health_report
+      - action: action_extract
+      - action: utter_jenkins_health
+
+  - story: jenkins test report
+    steps:
+      - intent: ask_job_test_report
+      - action: action_extract
+      - action: utter_jenkins_test
+
+  - story: jenkins git info
+    steps:
+      - intent: test-jenkins-git-info
+      - action: action_extract
+      - action: utter_jenkins_git_info
+
+  - story: kmamiz service structure
+    steps:
+      - intent: check-kmamiz-struct
+      - action: action_extract
+      - action: utter_kmamiz_struct
+
+  - story: kmamiz risk service
+    steps:
+      - intent: kmamiz-high-risk
+      - action: action_extract
+      - action: utter_kmamiz_risk_service
+
+  - story: kmamiz risk service detail
+    steps:
+      - intent: kmamiz-high-risk-detail
+      - action: action_extract
+      - action: utter_kmamiz_risk_service_detail

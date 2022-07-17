@@ -1,0 +1,16 @@
+FROM rasa/rasa:3.2.0-full
+WORKDIR /usr/src/app
+
+# use root user to install dependency
+USER root
+
+# install required model
+RUN pip install rasa[spacy] && python -m spacy download en_core_web_sm
+
+# try to build models
+COPY . .
+# RUN [ "rasa", "train", "--fixed-model-name", "msdobot-rasa-v1" ]
+RUN rasa train --fixed-model-name msdobot-rasa-v1
+
+# switch back to normal user
+USER 1001

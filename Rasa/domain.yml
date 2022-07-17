@@ -1,0 +1,117 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - out_of_scope
+  - check-restler
+  - check-actuator-health
+  - check-actuator-info
+  - check-swagger-api-list
+  - service-basic-info
+  - ask_job_health_report
+  - ask_job_test_report
+  - ask_jenkins_job_build_number
+  - check-kmamiz-struct
+  - kmamiz-high-risk
+  - kmamiz-high-risk-detail
+  - test-jenkins-git-info
+
+entities:
+  - custom_service
+
+slots:
+  custom_service:
+    type: text
+    # influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: custom_service
+
+responses:
+  utter_fallback:
+    - custom:
+        jobName: "none"
+        intent: "fallback"
+
+  utter_out_of_scope:
+    - custom:
+        jobName: ""
+        intent: "out_of_scope"
+
+  utter_out_of_scope_greet:
+    - custom:
+        jobName: "greet"
+        intent: "out_of_scope"
+
+  utter_out_of_scope_bye:
+    - custom:
+        jobName: "bye"
+        intent: "out_of_scope"
+
+  utter_restler:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "check-restler"
+
+  utter_actuator_health:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "check-actuator-health"
+
+  utter_actuator_info:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "check-actuator-info"
+
+  utter_swagger:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "check-swagger-api-list"
+
+  utter_service_info:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "service-basic-info"
+
+  utter_jenkins_health:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "ask_job_health_report"
+
+  utter_jenkins_test:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "ask_job_test_report"
+
+  utter_jenkins_build:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "ask_jenkins_job_build_number"
+
+  utter_kmamiz_struct:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "check-kmamiz-struct"
+
+  utter_kmamiz_risk_service:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "kmamiz-high-risk"
+
+  utter_kmamiz_risk_service_detail:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "kmamiz-high-risk-detail"
+
+  utter_jenkins_git_info:
+    - custom:
+        jobName: "{custom_service}"
+        intent: "test-jenkins-git-info"
+
+actions:
+  - action_extract
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

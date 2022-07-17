@@ -1,0 +1,10 @@
+{
+  "info": {
+    "Game": "This is a simple gaming service\nAuthor: David\nLatest Version: 1.2",
+    "Member": "this is a demo member manage service\nAuthor: David\nLatest Version: 1.0"
+  },
+  "api": {
+    "Game": ["/dice", "/chess", "/poker", "/solitaire"],
+    "Member": ["/changeName", "/updateInfo"]
+  }
+}

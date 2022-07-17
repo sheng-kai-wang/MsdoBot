@@ -1,0 +1,66 @@
+{
+  "errorCount": {
+    "Game": 100,
+    "Member": 20
+  },
+  "log": {
+    "Game": [
+      "[up] 0000",
+      "[up] 0030",
+      "[up] 0100",
+      "[down] 0200",
+      "[down] 0500",
+      "[up] 0700"
+    ],
+    "Member": [
+      "[up] 0000",
+      "[up] 0030",
+      "[up] 0900",
+      "[down] 1000",
+      "[down] 1100",
+      "[up] 1500"
+    ]
+  },
+  "buildLog": {
+    "Game": [
+      "[0050] build passed",
+      "[0110] build failed",
+      "[0210] build failed",
+      "[0310] build failed",
+      "[0430] build failed",
+      "[0510] build failed",
+      "[0630] build passed"
+    ],
+    "Member": [
+      "[0900] build passed",
+      "[0945] build failed",
+      "[1000] build failed",
+      "[1015] build failed",
+      "[1230] build failed",
+      "[1420] build failed",
+      "[1500] build passed"
+    ]
+  },
+  "apiLog": {
+    "Game": [
+      "[/dice][0045] status 200",
+      "[/dice][0055] status 500",
+      "[/dice][0100] status 500",
+      "[/dice][0130] status 500",
+      "[/chess][0145] status 500",
+      "[/card][0215] status 500",
+      "[/card][0445] status 500",
+      "[/dice][0700] status 200"
+    ],
+    "Member": [
+      "[/changeName][0900] status 200",
+      "[/changeName][1050] status 500",
+      "[/changeName][1100] status 500",
+      "[/updateInfo][1115] status 500",
+      "[/updateInfo][1145] status 500",
+      "[/updateInfo][1205] status 500",
+      "[/changeName][1350] status 500",
+      "[/updateInfo][1500] status 200"
+    ]
+  }
+}

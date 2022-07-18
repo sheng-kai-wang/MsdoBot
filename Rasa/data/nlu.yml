@@ -53,6 +53,36 @@ nlu:
       - what is this
       - order a pizza
 
+  # - intent: affirm
+  #   examples: |
+  #     - yes
+  #     - y
+  #     - indeed
+  #     - of course
+  #     - that sounds good
+  #     - correct
+
+  # - intent: deny
+  #   examples: |
+  #     - no
+  #     - n
+  #     - never
+  #     - I don't think so
+  #     - don't like that
+  #     - no way
+  #     - not really
+
+  # - intent: find_service_name
+  #   examples: |
+  #     - health data about [Cinema](custom_service)
+  #     - test report of [PDAS](custom_service)
+  #     - health data of [PDAS](custom_service)
+
+  # - intent: check
+  #   examples: |
+  #     - check [PDAS](custom_service)
+  #     - try [Notification](custom_service)
+
   - regex: custom_service
     examples: |
       - \b[a-zA-Z0-9-]+
@@ -63,6 +93,7 @@ nlu:
       - smoke test [UserService](custom_service)
       - smoke [BlockChainService](custom_service)
       - check restler fuzzer test on [SignatureVerificationService](custom_service)
+      - restler test [EmailService](custom_service)
       - restler test [ExternalRequestService](custom_service)
       - restler test result of [CredentialService](custom_service)
       - restler report of [PDAS](custom_service)
@@ -72,6 +103,7 @@ nlu:
       - restler test result of [SignatureVerificationService](custom_service)
       - restler test report of [ExternalRequestService](custom_service)
       - restler test result about [CredentialService](custom_service)
+      - restler test result about [EmailService](custom_service)
       - restler test report about [PDAS](custom_service)
       - restler test report about [ContractService](custom_service)
 
@@ -79,13 +111,16 @@ nlu:
     examples: |
       - service version of [CredentialService](custom_service)
       - version of [PDAS](custom_service)
+      - version of [EmailService](custom_service)
       - version of [ContractService](custom_service)
       - current version of [UserService](custom_service)
       - current service version of [BlockChainService](custom_service)
       - check service version of [SignatureVerificationService](custom_service)
+      - check service version of [EmailService](custom_service)
       - show me the service version of [ExternalRequestService](custom_service)
       - show service version of [CredentialService](custom_service)
       - [PDAS](custom_service) version
+      - [EmailService](custom_service) version
       - [ContractService](custom_service) version
       - [UserService](custom_service) version
       - current [BlockChainService](custom_service) version
@@ -97,6 +132,7 @@ nlu:
       - current service status of [CredentialService](custom_service)
       - [PDAS](custom_service) status
       - what status [UserService](custom_service) is
+      - what status [EmailService](custom_service) is
       - what status [BlockChainService](custom_service) is?
       - show me service status of [SignatureVerificationService](custom_service)
 
@@ -105,8 +141,10 @@ nlu:
       - api list of [ExternalRequestService](custom_service)
       - display api list of [CredentialService](custom_service)
       - api list about [PDAS](custom_service)
+      - api list about [EmailService](custom_service)
       - current api list about [UserService](custom_service)
       - api list about [BlockChainService](custom_service)
+      - api list of [EmailService](custom_service)
       - list api of [SignatureVerificationService](custom_service)
       - show api list about [ExternalRequestService](custom_service)
 
@@ -114,6 +152,7 @@ nlu:
     examples: |
       - service info about [CredentialService](custom_service)
       - list service info about [PDAS](custom_service)
+      - list service info about [EmailService](custom_service)
       - tell me about [UserService](custom_service)
       - show me some information about [BlockChainService](custom_service)
       - information about [SignatureVerificationService](custom_service)
@@ -121,6 +160,7 @@ nlu:
       - info about [CredentialService](custom_service)
       - info of [PDAS]
       - [UserService](custom_service) info
+      - [EmailService](custom_service) info
       - [BlockChainService](custom_service) information
       - detail about [SignatureVerificationService](custom_service)
       - detail of [ExternalRequestService](custom_service)
@@ -135,11 +175,13 @@ nlu:
       - build number of [ExternalRequestService](custom_service)
       - build number about [CredentialService](custom_service)
       - current build number of [PDAS](custom_service)
+      - current build number of [EmailService](custom_service)
       - latest build number about [UserService](custom_service)
       - [BlockChainService](custom_service) latest build number
       - [SignatureVerificationService](custom_service) build number
       - tell me the build number of [ExternalRequestService](custom_service)
       - tell me the build number about [CredentialService](custom_service)
+      - tell me the build number about [EmailService](custom_service)
       - jenkins build number of [PDAS](custom_service)
       - latest jenkins build number of [UserService](custom_service)
       - latest jenkins build number about [BlockChainService](custom_service)
@@ -151,7 +193,9 @@ nlu:
       - health data about [PDAS](custom_service)
       - health report about [UserService](custom_service)
       - health report of [BlockChainService](custom_service)
+      - health report of [EmailService](custom_service)
       - health data of [SignatureVerificationService](custom_service)
+      - health data of [EmailService](custom_service)
       - [ExternalRequestService](custom_service) health report
       - [CredentialService](custom_service) health data
       - give me the health report about [PDAS](custom_service)
@@ -163,6 +207,7 @@ nlu:
       - jenkins health result of [BlockChainService](custom_service)
       - build report of [CredentialService](custom_service)
       - build report about [ExternalRequestService](custom_service)
+      - build report about [EmailService](custom_service)
       - jenkins build report of [SignatureVerificationService](custom_service)
       - jenkins build report about [CredentialService](custom_service)
       - show me jenkins build result of [PDAS](custom_service)
@@ -176,7 +221,9 @@ nlu:
       - test report about [ExternalRequestService](custom_service)
       - show me the test report of [CredentialService](custom_service)
       - give me the test result about [PDAS](custom_service)
+      - give me the test result about [EmailService](custom_service)
       - test result of [UserService](custom_service)
+      - test result of [EmailService](custom_service)
       - jenkins test report about [BlockChainService](custom_service)
       - jenkins test result about [ExternalRequestService](custom_service)
       - show me jenkins test report of [SignatureVerificationService](custom_service)
@@ -184,11 +231,13 @@ nlu:
       - latest test report of [PDAS](custom_service)
       - latest test report about [UserService](custom_service)
       - latest jenkins test report of [BlockChainService](custom_service)
+      - latest jenkins test report of [EmailService](custom_service)
 
   - intent: test-jenkins-git-info
     examples: |
       - git information about [PDAS](custom_service)
       - git info about [UserService](custom_service)
+      - git info about [EmailService](custom_service)
       - git information of [BlockChainService](custom_service)
       - git info about [ExternalRequestService](custom_service)
       - repo link about [SignatureVerificationService](custom_service)
@@ -199,6 +248,7 @@ nlu:
       - github information about [CredentialService](custom_service)
       - github information of [UserService](custom_service)
       - github link about [PDAS](custom_service)
+      - git repo of [EmailService](custom_service)
       - git repo of [BlockChainService](custom_service)
       - git repo about [UserService](custom_service)
       - github repo of [SignatureVerificationService](custom_service)
@@ -210,6 +260,7 @@ nlu:
       - show me the service structure about [UserService](custom_service)
       - show me the service dependency of [BlockChainService](custom_service)
       - show me the service dependency about [SignatureVerificationService](custom_service)
+      - show me the service dependency about [EmailService](custom_service)
       - service structure of [ExternalRequestService](custom_service)
       - service structure about [CredentialService](custom_service)
       - structure of [PDAS](custom_service)
@@ -218,6 +269,7 @@ nlu:
       - show me the architecture of [UserService](custom_service)
       - give me the architecture of [SignatureVerificationService](custom_service)
       - architecture of [PDAS](custom_service)
+      - architecture of [EmailService](custom_service)
       - dependency of [BlockChainService](custom_service)
       - dependency about [CredentialService](custom_service)
       - give me the service structure of [PDAS](custom_service)
@@ -229,9 +281,11 @@ nlu:
       - risking service of [BlockChainService](custom_service)
       - show me the highest risk service in [SignatureVerificationService](custom_service)
       - which service is most risky in [UserService](custom_service)
+      - which service is most risky in [EmailService](custom_service)
       - the most risky one of [SignatureVerificationService](custom_service)
       - risky one about [ExternalRequestService](custom_service)
       - risky one about [UserService](custom_service)
+      - highly risky service of [EmailService](custom_service)
       - highly risky service of [PDAS](custom_service)
       - show me the highly risky service in [PDAS](custom_service)
 
@@ -239,10 +293,14 @@ nlu:
     examples: |
       - search risky service detail about [PDAS](custom_service)
       - search risky service detail in [UserService](custom_service)
+      - search risky service detail in [EmailService](custom_service)
       - check risky service detail information about [BlockChainService](custom_service)
       - find most risk service information about [ExternalRequestService](custom_service)
+      - find most risk service information about [EmailService](custom_service)
       - most risky service information of [SignatureVerificationService](custom_service)
       - highest risk service information about [UserService](custom_service)
       - highest risk service detail about [BlockChainService](custom_service)
+      - information of highly risky service in [EmailService](custom_service)
+      - information about highly risky service in [EmailService](custom_service)
       - detailed information of highly risky service in [PDAS](custom_service)
       - detailed information about highly risky service of [PDAS](custom_service)

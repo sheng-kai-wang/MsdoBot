@@ -850,6 +850,7 @@ var pdasNameMatcher = (info: string) => {
     CredentialService: "credential-service.pdas (latest)",
     ExternalRequestService: "external-service.pdas (latest)",
     SignatureVerificationService: "signature-service.pdas (latest)",
+    EmailService: "email-service.pdas (latest)",
   };
   return PDASDict[info];
 };

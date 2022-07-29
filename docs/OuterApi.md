@@ -95,3 +95,7 @@ system access level: `[['score'], ['100']]`
 ```
 
 check [HERE](https://b1naryth1ef.github.io/disco/bot_tutorial/message_embeds.html), or [Official Docs](https://discord.com/developers/docs/intro) for more detail information
+
+## Available API List
+
+coming soon...

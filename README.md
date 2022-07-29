@@ -6,7 +6,7 @@ MsdoBot can provide developers with appropriate information to support microserv
 
 ## Architecture
 
-![Concept Diagram of KMamiz](./docs/img/MsdoBot-structure-v3.drawio.svg)
+![Concept Diagram of KMamiz](./docs/img/MsdoBot-structure-v3.svg)
 
 ## Try MsdoBot
 

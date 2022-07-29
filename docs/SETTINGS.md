@@ -61,7 +61,7 @@ There are three types of capabilities:
         to: <data-destination>
         addToGlobal: <true/false>
     output:
-      - from: <daat-source>
+      - from: <data-source>
         to: <data-destination>
         addToGlobal: <true/false>
 ```

@@ -2,6 +2,8 @@
 
 ## Preparation
 
+Click [HERE](https://youtu.be/0EUTE8R4EU8) to see video guide.
+
 Apply a Discord Application from [Here](https://discord.com/developers/applications).
 
 Go to Bot User page (accessible after enable Bot User function), enable everything except `OAUTH2 grant` and get a new bot token.
@@ -145,30 +147,20 @@ java -Dspring.profiles.active=<your-profile> -jar app.jar
 
 ### Docker Version
 
-Build
+#### Set Up
+
+- check rasa service
+- check MsdoBot properties settings
+  - build MsdoBot with target property profiles
+
+#### Build
 
 ```bash
-cd Rasa
-sh build.sh
-cd ..
-
-cd OuterApi
-sh build.sh
-cd ..
-
-cd MsdoBot
-sh build.sh
-cd ..
+sh buildAll.sh
 ```
 
-Run
+#### Run
 
 ```bash
-cd Rasa
-sh run.sh
-cd ..
-
-cd MsdoBot
-sh run.sh
-cd ..
+sh runAll.sh
 ```

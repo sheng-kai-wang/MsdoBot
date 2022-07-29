@@ -4,6 +4,10 @@
 
 MsdoBot can provide developers with appropriate information to support microservice system development and publish real-time system status info for monitoring and maintenance. Most of all, MsdoBot also preserves good extensibility, which allows users to add new functionality and integrate other development and operation tools easily by adding new configuration files.
 
+## Architecture
+
+![Concept Diagram of KMamiz](./docs/img/MsdoBot-structure-v3.drawio.svg)
+
 ## Try MsdoBot
 
 > demo Discord server, coming soon

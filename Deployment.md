@@ -22,19 +22,19 @@ Invite link can be generated at the Application -> URL Generator page. Remember 
 
 Our system is composed of four differenct parts:
 
-- MsdoBot main system
-- Rasa server
-- RabbitMQ server
-- Outer api endpoints
+- [MsdoBot main system](#manual_msdobot)
+- [Rasa server](#manual_rasa)
+- [RabbitMQ server](#manual_rabbit)
+- [Outer api endpoints](#manual_outer)
 
 We provide two different way to bulid and deploy
 
-- [Manual Version](#Manual-Version)
-- [Docker Version](#Docker-version)
+- [Manual Version](#manual)
+- [Docker Version](#docker)
 
-### Manual Version
+### Manual Version<span id="manual"></span>
 
-#### Rasa server
+#### Rasa server<span id="manual_rasa"></span>
 
 > You need to have Rasa framework installed before doing this. Follow the installation document [here](https://rasa.com/docs/rasa/installation/).
 
@@ -58,7 +58,7 @@ rasa run --model models/msdobot-rasa-v1.tar.gz
 
 If you altered any settings, you can run `rasa data validate` to validate your new settings and rebuild a new module by following previous steps.
 
-#### RabbitMQ server
+#### RabbitMQ server<span id="manual_rabbit"></span>
 
 You can use your own RabbitMQ server or run
 
@@ -68,7 +68,7 @@ docker run -d --name msdobot-rabbitmq -e RABBITMQ_DEFAULT_USER=<rabbitmq-usernam
 
 Replace `<rabbitmq-username>` and `<rabbitmq-password>` with your settings
 
-#### Outer Api Endpoint
+#### Outer Api Endpoint<span id="manual_outer"></span>
 
 build and run endpoint
 
@@ -81,7 +81,7 @@ npm start
 
 If you want to add new endpoints, new endpoints should support RESTful api and use specified data format. No further limitations.
 
-#### MsdoBot main server
+#### MsdoBot main server<span id="manual_msdobot"></span>
 
 Edit following application.properties with your settings
 
@@ -145,7 +145,7 @@ If you use specific application properties profile, use flag `-Dspring.profiles.
 java -Dspring.profiles.active=<your-profile> -jar app.jar
 ```
 
-### Docker Version
+### Docker Version<span id="docker"></span>
 
 #### Set Up
 

@@ -6,11 +6,19 @@ MsdoBot can provide developers with appropriate information to support microserv
 
 ## Architecture
 
-![Concept Diagram of KMamiz](./docs/img/MsdoBot-structure-v3.svg)
+![Architecture Diagram of MsdoBot](./docs/img/MsdoBot-structure-v3.svg)
+
+## Core Workflow
+
+![Workflow Diagram of MsdoBot](./docs/img/MsdoBot-final-orchestrator-workflow.drawio.svg)
 
 ## Try MsdoBot
 
-> demo Discord server, coming soon
+> demo Discord server, coming soon...
+
+## Demo Video
+
+[HERE](https://youtu.be/hRe_4gG_Bhc)
 
 ## Deployment
 

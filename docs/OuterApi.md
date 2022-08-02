@@ -308,9 +308,49 @@ main outer api of MsdoBot
 
 Auxiliary tools listed below are used in this API section: `Actuator`, `Swagger`, `KMamiz`
 
+Aggregate and Rendering capability api endpoints share the same request parameter, modify the data structure if neccessary
+
+```typescript
+interface Dict {
+  [index: string]: string;
+}
+
+interface ServiceDict {
+  [index: string]: Dict;
+}
+
+export type CrossContextParameter = {
+  aggregate: Dict;
+  specificAggregate: ServiceDict;
+  properties: ServiceDict;
+};
+```
+
+Rendering capability api endpoints will try to create a json object in Discord message format, modify the data structure if neccessary
+
+```typescript
+export type RenderMsg = {
+  mainMessage?: string;
+  embedList?: RenderMsgEmbed[];
+};
+
+export type RenderMsgEmbed = {
+  title?: string;
+  titleLink?: string;
+  imageLink?: string;
+  description?: string;
+  fieldList?: MsgField[];
+};
+
+export type MsgField = {
+  name: string;
+  value: string;
+};
+```
+
 > Note: due to different service naming, several KMamiz related APIs use hardcoded mapping table to find the corresponding service, update this table if neccessary
 >
-> ```javascript
+> ```typescript
 > var pdasNameMatcher = (info: string) => {
 >   let PDASDict = {
 >     UserService: "user-service.pdas (latest)",
@@ -348,3 +388,43 @@ check if actuator health method is working, this api is unused in MsdoBot
 Type: `none`
 
 get environment information from Actuator, this api is incomplete and unused in MsdoBot
+
+#### Get Actuator info<span id="actuator-info"></span>
+
+`POST /actuatorInfo`
+
+Type: `General`
+
+get info data from Actuator
+
+#### Get Swagger api list<span id="swagger-api-list"></span>
+
+`POST /swaggerApiList`
+
+Type: `General`
+
+get api list inforamtion from Swagger
+
+#### Render service information<span id="render-service-information"></span>
+
+`POST /renderServiceInfo`
+
+Type: `Rendering`
+
+render information retrieved from `Actuator`, `Swagger`, and `KMamiz`
+
+#### Get KMamiz architecture data<span id="kmamiz-arch"></span>
+
+`POST /kmamizStruct`
+
+Type: `General`
+
+get service architecture info from KMamiz
+
+#### Get KMamiz service indicator data<span id="kmamiz-indicator"></span>
+
+`POST /kmamizMonitor`
+
+Type: `General`
+
+get service indicator info from KMamiz

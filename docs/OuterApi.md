@@ -146,9 +146,27 @@ Otherwise, use prefix `{your-domain-or-ip}:{port-number}`, for example: `localho
 > this part of APIs are mostly only for testing purpose,
 > APIs related to the system 'Game' also belong in this part
 
+#### Greetings<span id="greetings-test"></span>
+
+`GET /`
+
+Type: `none`
+
+used to test if the api endpoint is alive
+
+#### Fake rendering<span id="rendering-test"></span>
+
+`POST /rendering`
+
+Type: `none`
+
+used to test if rendering data format can work
+
 #### Get service detail<span id="get-service-detail-test"></span>
 
-`GET /serviceDetail`
+`POST /serviceDetail`
+
+Type: `General`
 
 get service detail from testing system 'Game'
 
@@ -158,6 +176,8 @@ get service detail from testing system 'Game'
 
 `POST /serviceApiDetail`
 
+Type: `General`
+
 get service api detail from testing system 'Game'
 
 > Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
@@ -165,6 +185,8 @@ get service api detail from testing system 'Game'
 #### Aggregate service info<span id="aggregate-service-info-test"></span>
 
 `POST /aggregateServiceInfo`
+
+Type: `Aggregate`
 
 aggregate service detail and service api detail retrieved from testing system 'Game'
 
@@ -174,6 +196,8 @@ aggregate service detail and service api detail retrieved from testing system 'G
 
 `POST /renderDetail`
 
+Type: `Rendering`
+
 render service detail (general detail and api detail) in to discord message format
 
 > Note: this api only works for system 'Game' and should not be used to query other system/service
@@ -181,6 +205,8 @@ render service detail (general detail and api detail) in to discord message form
 #### Get service error log<span id="get-service-error-log-test"></span>
 
 `POST /errorLog`
+
+Type: `General`
 
 get service error log
 
@@ -190,6 +216,8 @@ get service error log
 
 `POST /logErrorAnalyze`
 
+Type: `Aggregate`
+
 analyze error log retrived from each service and find the time zone of error occurrence
 
 > Note: this api only works for system 'Game' and should not be used to query other system/service
@@ -197,6 +225,8 @@ analyze error log retrived from each service and find the time zone of error occ
 #### Get service build error log<span id="get-service-build-error-log-test"></span>
 
 `POST /buildErrLog`
+
+Type: `General`
 
 get service build error log
 
@@ -206,6 +236,8 @@ get service build error log
 
 `POST /apiErrLog`
 
+Type: `General`
+
 get service api error log
 
 > Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
@@ -213,6 +245,8 @@ get service api error log
 #### Extract specific log information<span id="extrect-specific-log-info-test"></span>
 
 `POST /extractSpecificLog`
+
+Type: `Aggregate`
 
 extract logs from specific time zone
 
@@ -222,14 +256,50 @@ extract logs from specific time zone
 
 `POST /renderErrLog`
 
+Type: `Rendering`
+
 render error log into discord message format
 
 > Note: this api only works for system 'Game' and should not be used to query other system/service
 
 #### Get service error count<span id="get-service-error-count-test"></span>
 
+`POST /listError`
+
+Type: `General`
+
 get service error count
 
 > Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Analyze service error<span id="analyze-service-error-test"></span>
+
+`POST /checkHighError`
+
+Type: `Aggregate`
+
+analyze service error count to find which service has the highest error count
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Find highest error service detail<span id="find-highest-error-service-test"></span>
+
+`POST /aggregateServiceInfoError`
+
+Type: `Aggregate`
+
+find service detail about the service which has highest error count
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Render error service detail<span id="render-error-service-detail-test"></span>
+
+`POST /rederDetailError`
+
+Type: `Rendering`
+
+render service detail about the highest error service
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
 
 ### MsdoBot Main Api

@@ -10,6 +10,8 @@
 
 ### Vocabulary
 
+define what kinds of property name can be used, what kind of tools can be used, what property is available in each tool context
+
 ```yml
 ConceptList:
   - conceptName: conceptX
@@ -46,7 +48,8 @@ There are three types of capabilities:
     - <used-property>
   output:
     type: <plainText/json>
-    dataLabel: <plainText-dataLabel>
+    dataLabel: <plainText-dataLabel> # add this only if return data is plainText
+    # add this only if return data is json string
     jsonInfo:
       - jsonPath: <data-path>
         description: <data-description>
@@ -57,9 +60,9 @@ There are three types of capabilities:
       schema: <mapping-schema>
   storedData:
     input:
-      - from: <data-source>
-        to: <data-destination>
-        addToGlobal: <true/false>
+      - from: <data-source> # what is the data source
+        to: <data-destination> # what is the data destination
+        addToGlobal: <true/false> # need to add this data into global session ?
     output:
       - from: <data-source>
         to: <data-destination>
@@ -104,6 +107,7 @@ There are three types of capabilities:
       property:
         - User.username
     dataSource:
+      # this data will be used with name 'username'
       - useAs: username
         isAggregationData: false
         context: jenkins
@@ -169,6 +173,8 @@ There are three types of capabilities:
 
 ### Upper Intent
 
+define composite capability
+
 ```yml
 crossCapabilityList:
   # upper intent example
@@ -184,6 +190,10 @@ crossCapabilityList:
 ```
 
 ### Service
+
+define what kind of microservice system you can ask
+
+global settings can be placed at system config, for example settings about `tool-A` is a global setting and will be applied in all the microserice under this system automaticially.
 
 ```yml
 serviceList:

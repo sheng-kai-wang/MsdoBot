@@ -99,3 +99,22 @@ check [HERE](https://b1naryth1ef.github.io/disco/bot_tutorial/message_embeds.htm
 ## Available API List
 
 coming soon...
+
+| Method | Type      | Path                   | Description              |
+| ------ | --------- | ---------------------- | ------------------------ |
+| GET    | none      | `/`                    | testing api, unused      |
+| POST   | Rendering | `/rendering`           | testing api, unused      |
+| POST   | none      | `fakeMsg`              | testing api, unused      |
+| POST   | General   | `serviceDetail`        | testing api, Game system |
+| POST   | General   | `serviceApiDetail`     | testing api, Game system |
+| POST   | Aggregate | `aggregateServiceInfo` | testing api, Game system |
+| POST   | Rendering | `renderDetail`         | testing api, Game system |
+| POST   | General   | `errorLog`             | testing api, Game system |
+| POST   | Aggregate | `logErrorAnalyze`      | testing api, Game system |
+| POST   | General   | `buildErrLog`          | testing api, Game system |
+| POST   | General   | `apiErrLog`            | testing api, Game system |
+| POST   | Aggregate | `extractSpecificLog`   | testing api, Game system |
+| POST   | Rendering | `renderErrLog`         | testing api, Game system |
+| POST   | General   | `listError`            | testing api, Game system |
+
+## Description

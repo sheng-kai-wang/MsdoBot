@@ -106,36 +106,38 @@ Otherwise, use prefix `{your-domain-or-ip}:{port-number}`, for example: `localho
 
 ### API list
 
-| Method | Type      | Path                         | Description                      |
-| ------ | --------- | ---------------------------- | -------------------------------- |
-| GET    | none      | `/`                          | testing api, unused              |
-| POST   | Rendering | `/rendering`                 | testing api, unused              |
-| POST   | none      | `/fakeMsg`                   | testing api, unused              |
-| POST   | General   | `/serviceDetail`             | testing api                      |
-| POST   | General   | `/serviceApiDetail`          | testing api                      |
-| POST   | Aggregate | `/aggregateServiceInfo`      | testing api                      |
-| POST   | Rendering | `/renderDetail`              | testing api                      |
-| POST   | General   | `/errorLog`                  | testing api                      |
-| POST   | Aggregate | `/logErrorAnalyze`           | testing api                      |
-| POST   | General   | `/buildErrLog`               | testing api                      |
-| POST   | General   | `/apiErrLog`                 | testing api                      |
-| POST   | Aggregate | `/extractSpecificLog`        | testing api                      |
-| POST   | Rendering | `/renderErrLog`              | testing api                      |
-| POST   | General   | `/listError`                 | testing api                      |
-| POST   | Aggregate | `/checkHighError`            | testing api                      |
-| POST   | Aggregate | `/aggregateServiceInfoError` | testing api                      |
-| POST   | Rendering | `/renderDetailError`         | testing api                      |
-| POST   | General   | `/actuatorHealth`            | Actuator api                     |
-| POST   | none      | `/testActHealth`             | Actuator api, unused             |
-| POST   | none      | `/actuatorEnv`               | Actuator api, incomplete         |
-| POST   | General   | `/actuatorInfo`              | Actuator api                     |
-| POST   | General   | `/swaggerApiList`            | Swagger api                      |
-| POST   | Rendering | `/renderServiceInfo`         | Render Service information       |
-| POST   | General   | `/kmamizStruct`              | KMamiz api                       |
-| POST   | General   | `/kmamizMonitor`             | KMamiz api                       |
-| POST   | Aggregate | `/kmamizRiskAnalyze`         | Analyze service risk data        |
-| POST   | Rendering | `/renderKmamizService`       | Render risky service information |
-| POST   | Rendering | `/renderRiskServiceInfo`     | Render risky service detail      |
+> Type `none` APIs are unused in MsdoBot
+
+| Method | Type      | Path                         | Description                                                           |
+| ------ | --------- | ---------------------------- | --------------------------------------------------------------------- |
+| GET    | none      | `/`                          | [Greetings, UNUSED](#greetings)                                       |
+| POST   | Rendering | `/rendering`                 | [Fake rendering, UNUSED](#rendering-test)                             |
+| POST   | none      | `/fakeMsg`                   | [Fake message, UNUSED](#fake-message-test)                            |
+| POST   | General   | `/serviceDetail`             | [Get service detail](#get-service-detail-test)                        |
+| POST   | General   | `/serviceApiDetail`          | [Get service api detail](#get-service-api-detail-test)                |
+| POST   | Aggregate | `/aggregateServiceInfo`      | [Aggregate service info](#aggregate-service-info-test)                |
+| POST   | Rendering | `/renderDetail`              | [Render service detail](#render-service-detail-test)                  |
+| POST   | General   | `/errorLog`                  | [Get service error log](#get-service-error-log-test)                  |
+| POST   | Aggregate | `/logErrorAnalyze`           | [Analyze service error log](#aggregate-service-error-log-test)        |
+| POST   | General   | `/buildErrLog`               | [Get service build error log](#get-service-build-error-log-test)      |
+| POST   | General   | `/apiErrLog`                 | [Get service api error log](#get-service-api-error-log-test)          |
+| POST   | Aggregate | `/extractSpecificLog`        | [Extract specific log information](#extrect-specific-log-info-test)   |
+| POST   | Rendering | `/renderErrLog`              | [Render error log message](#render-error-log-message-test)            |
+| POST   | General   | `/listError`                 | [Get service error count](#get-service-error-count-test)              |
+| POST   | Aggregate | `/checkHighError`            | [Analyze service error](#analyze-service-error-test)                  |
+| POST   | Aggregate | `/aggregateServiceInfoError` | [Find highest error service detail](#find-highest-error-service-test) |
+| POST   | Rendering | `/renderDetailError`         | [Render error service detail](#render-error-service-detail-test)      |
+| POST   | General   | `/actuatorHealth`            | [Get Actuator health status](#actuator-health)                        |
+| POST   | none      | `/testActHealth`             | [Get Actuator health status, UNUSED](#actuator-health-test)           |
+| POST   | none      | `/actuatorEnv`               | [Get Actuator environment information, UNUSED](#actuator-env)         |
+| POST   | General   | `/actuatorInfo`              | [Get Actuator info](#actuator-info)                                   |
+| POST   | General   | `/swaggerApiList`            | [Get Swagger api list](#swagger-api-list)                             |
+| POST   | Rendering | `/renderServiceInfo`         | [Render service information](#render-service-information)             |
+| POST   | General   | `/kmamizStruct`              | [Get KMamiz architecture data](#kmamiz-arch)                          |
+| POST   | General   | `/kmamizMonitor`             | [Get KMamiz service indicator data](#kmamiz-indicator)                |
+| POST   | Aggregate | `/kmamizRiskAnalyze`         | [Analyze KMamiz risk indicator](#analyze-kmamiz-indicator)            |
+| POST   | Rendering | `/renderKmamizService`       | [Render KMamiz risk indicator](#render-kmamiz-indicator)              |
+| POST   | Rendering | `/renderRiskServiceInfo`     | [Render risky service detail](#render-risky-service-info)             |
 
 ---
 
@@ -161,6 +163,14 @@ used to test if the api endpoint is alive
 Type: `none`
 
 used to test if rendering data format can work
+
+#### Fake message<span id="fake-message-test"></span>
+
+`POST /fakeMsg`
+
+Type: `none`
+
+test if response Discord message format is working
 
 #### Get service detail<span id="get-service-detail-test"></span>
 
@@ -428,3 +438,27 @@ get service architecture info from KMamiz
 Type: `General`
 
 get service indicator info from KMamiz
+
+#### Analyze KMamiz risk indicator<span id="analyze-kmamiz-indicator"></span>
+
+`POST /kmamizRiskAnalyze`
+
+Type: `Aggregate`
+
+analyze KMamiz service risk indicator to find the service in the highest risk
+
+#### Render KMamiz risk indicator<span id="render-kmamiz-indicator"></span>
+
+`POST /renderKmamizService`
+
+Type: `Rendering`
+
+render KMamiz service risk indicator into Discord message format
+
+#### Render risky service detail<span id="render-risky-service-info"></span>
+
+`POST /renderRiskServiceInfo`
+
+Type: `Rendering`
+
+render service info about the service which is most risky

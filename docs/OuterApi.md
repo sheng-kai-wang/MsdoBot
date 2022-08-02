@@ -106,36 +106,36 @@ Otherwise, use prefix `{your-domain-or-ip}:{port-number}`, for example: `localho
 
 ### API list
 
-| Method | Type      | Path                         | Description              |
-| ------ | --------- | ---------------------------- | ------------------------ |
-| GET    | none      | `/`                          | testing api, unused      |
-| POST   | Rendering | `/rendering`                 | testing api, unused      |
-| POST   | none      | `/fakeMsg`                   | testing api, unused      |
-| POST   | General   | `/serviceDetail`             | testing api              |
-| POST   | General   | `/serviceApiDetail`          | testing api              |
-| POST   | Aggregate | `/aggregateServiceInfo`      | testing api              |
-| POST   | Rendering | `/renderDetail`              | testing api, Game system |
-| POST   | General   | `/errorLog`                  | testing api, Game system |
-| POST   | Aggregate | `/logErrorAnalyze`           | testing api, Game system |
-| POST   | General   | `/buildErrLog`               | testing api, Game system |
-| POST   | General   | `/apiErrLog`                 | testing api, Game system |
-| POST   | Aggregate | `/extractSpecificLog`        | testing api, Game system |
-| POST   | Rendering | `/renderErrLog`              | testing api, Game system |
-| POST   | General   | `/listError`                 | testing api, Game system |
-| POST   | Aggregate | `/checkHighError`            | testing api, Game system |
-| POST   | Aggregate | `/aggregateServiceInfoError` | testing api, Game system |
-| POST   | Rendering | `/renderDetailError`         | testing api, Game system |
-| POST   | General   | `/actuatorHealth`            | Actuator api             |
-| POST   | General   | `/testActHealth`             | testing api, unused      |
-| POST   | General   | `/actuatorEnv`               | Actuator api, incomplete |
-| POST   | General   | `/actuatorInfo`              | Actuator api             |
-| POST   | General   | `/swaggerApiList`            | Swagger api              |
-| POST   | Rendering | `/renderServiceInfo`         |                          |
-| POST   | General   | `/kmamizStruct`              | KMamiz api               |
-| POST   | General   | `/kmamizMonitor`             | KMamiz api               |
-| POST   | Aggregate | `/kmamizRiskAnalyze`         |                          |
-| POST   | Rendering | `/renderKmamizService`       |                          |
-| POST   | Rendering | `/renderRiskServiceInfo`     |                          |
+| Method | Type      | Path                         | Description                      |
+| ------ | --------- | ---------------------------- | -------------------------------- |
+| GET    | none      | `/`                          | testing api, unused              |
+| POST   | Rendering | `/rendering`                 | testing api, unused              |
+| POST   | none      | `/fakeMsg`                   | testing api, unused              |
+| POST   | General   | `/serviceDetail`             | testing api                      |
+| POST   | General   | `/serviceApiDetail`          | testing api                      |
+| POST   | Aggregate | `/aggregateServiceInfo`      | testing api                      |
+| POST   | Rendering | `/renderDetail`              | testing api                      |
+| POST   | General   | `/errorLog`                  | testing api                      |
+| POST   | Aggregate | `/logErrorAnalyze`           | testing api                      |
+| POST   | General   | `/buildErrLog`               | testing api                      |
+| POST   | General   | `/apiErrLog`                 | testing api                      |
+| POST   | Aggregate | `/extractSpecificLog`        | testing api                      |
+| POST   | Rendering | `/renderErrLog`              | testing api                      |
+| POST   | General   | `/listError`                 | testing api                      |
+| POST   | Aggregate | `/checkHighError`            | testing api                      |
+| POST   | Aggregate | `/aggregateServiceInfoError` | testing api                      |
+| POST   | Rendering | `/renderDetailError`         | testing api                      |
+| POST   | General   | `/actuatorHealth`            | Actuator api                     |
+| POST   | none      | `/testActHealth`             | Actuator api, unused             |
+| POST   | none      | `/actuatorEnv`               | Actuator api, incomplete         |
+| POST   | General   | `/actuatorInfo`              | Actuator api                     |
+| POST   | General   | `/swaggerApiList`            | Swagger api                      |
+| POST   | Rendering | `/renderServiceInfo`         | Render Service information       |
+| POST   | General   | `/kmamizStruct`              | KMamiz api                       |
+| POST   | General   | `/kmamizMonitor`             | KMamiz api                       |
+| POST   | Aggregate | `/kmamizRiskAnalyze`         | Analyze service risk data        |
+| POST   | Rendering | `/renderKmamizService`       | Render risky service information |
+| POST   | Rendering | `/renderRiskServiceInfo`     | Render risky service detail      |
 
 ---
 
@@ -294,7 +294,7 @@ find service detail about the service which has highest error count
 
 #### Render error service detail<span id="render-error-service-detail-test"></span>
 
-`POST /rederDetailError`
+`POST /renderDetailError`
 
 Type: `Rendering`
 
@@ -303,3 +303,48 @@ render service detail about the highest error service
 > Note: this api only works for system 'Game' and should not be used to query other system/service
 
 ### MsdoBot Main Api
+
+main outer api of MsdoBot
+
+Auxiliary tools listed below are used in this API section: `Actuator`, `Swagger`, `KMamiz`
+
+> Note: due to different service naming, several KMamiz related APIs use hardcoded mapping table to find the corresponding service, update this table if neccessary
+>
+> ```javascript
+> var pdasNameMatcher = (info: string) => {
+>   let PDASDict = {
+>     UserService: "user-service.pdas (latest)",
+>     BlockChainService: "blockchain-service.pdas (latest)",
+>     ContractService: "contract-service.pdas (latest)",
+>     CredentialService: "credential-service.pdas (latest)",
+>     ExternalRequestService: "external-service.pdas (latest)",
+>     SignatureVerificationService: "signature-service.pdas (latest)",
+>     EmailService: "email-service.pdas (latest)",
+>   };
+>   return PDASDict[info];
+> };
+> ```
+
+#### Get Actuator health status<span id="actuator-health"></span>
+
+`POST /actuatorHealth`
+
+Type: `General`
+
+get health status from Actuator
+
+#### Get Actuator health status (test version)<span id="actuator-health-test"></span>
+
+`POST /testActHealth`
+
+Type: `none`
+
+check if actuator health method is working, this api is unused in MsdoBot
+
+#### Get Actuator environment information (Incomplete)<span id="actuator-env"></span>
+
+`POST /actuatorEnv`
+
+Type: `none`
+
+get environment information from Actuator, this api is incomplete and unused in MsdoBot

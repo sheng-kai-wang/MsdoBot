@@ -98,16 +98,22 @@ check [HERE](https://b1naryth1ef.github.io/disco/bot_tutorial/message_embeds.htm
 
 ## Available API List
 
-coming soon...
+### Prefix
+
+If using local docker network, use prefix `{docker-container-name}:{port-number}`, for example: `msdobot-outer-api:10001`
+
+Otherwise, use prefix `{your-domain-or-ip}:{port-number}`, for example: `localhost:10001`
+
+### API list
 
 | Method | Type      | Path                         | Description              |
 | ------ | --------- | ---------------------------- | ------------------------ |
 | GET    | none      | `/`                          | testing api, unused      |
 | POST   | Rendering | `/rendering`                 | testing api, unused      |
 | POST   | none      | `/fakeMsg`                   | testing api, unused      |
-| POST   | General   | `/serviceDetail`             | testing api, Game system |
-| POST   | General   | `/serviceApiDetail`          | testing api, Game system |
-| POST   | Aggregate | `/aggregateServiceInfo`      | testing api, Game system |
+| POST   | General   | `/serviceDetail`             | testing api              |
+| POST   | General   | `/serviceApiDetail`          | testing api              |
+| POST   | Aggregate | `/aggregateServiceInfo`      | testing api              |
 | POST   | Rendering | `/renderDetail`              | testing api, Game system |
 | POST   | General   | `/errorLog`                  | testing api, Game system |
 | POST   | Aggregate | `/logErrorAnalyze`           | testing api, Game system |
@@ -131,4 +137,99 @@ coming soon...
 | POST   | Rendering | `/renderKmamizService`       |                          |
 | POST   | Rendering | `/renderRiskServiceInfo`     |                          |
 
+---
+
 ## Description
+
+### Testing Api
+
+> this part of APIs are mostly only for testing purpose,
+> APIs related to the system 'Game' also belong in this part
+
+#### Get service detail<span id="get-service-detail-test"></span>
+
+`GET /serviceDetail`
+
+get service detail from testing system 'Game'
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Get service api detail<span id="get-service-api-detail-test"></span>
+
+`POST /serviceApiDetail`
+
+get service api detail from testing system 'Game'
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Aggregate service info<span id="aggregate-service-info-test"></span>
+
+`POST /aggregateServiceInfo`
+
+aggregate service detail and service api detail retrieved from testing system 'Game'
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Render service detail<span id="render-service-detail-test"></span>
+
+`POST /renderDetail`
+
+render service detail (general detail and api detail) in to discord message format
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Get service error log<span id="get-service-error-log-test"></span>
+
+`POST /errorLog`
+
+get service error log
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Analyze service error log<span id="aggregate-service-error-log-test"></span>
+
+`POST /logErrorAnalyze`
+
+analyze error log retrived from each service and find the time zone of error occurrence
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Get service build error log<span id="get-service-build-error-log-test"></span>
+
+`POST /buildErrLog`
+
+get service build error log
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Get service api error log<span id="get-service-api-error-log-test"></span>
+
+`POST /apiErrLog`
+
+get service api error log
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+#### Extract specific log information<span id="extrect-specific-log-info-test"></span>
+
+`POST /extractSpecificLog`
+
+extract logs from specific time zone
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Render error log message<span id="render-error-log-message-test"></span>
+
+`POST /renderErrLog`
+
+render error log into discord message format
+
+> Note: this api only works for system 'Game' and should not be used to query other system/service
+
+#### Get service error count<span id="get-service-error-count-test"></span>
+
+get service error count
+
+> Note: this api reads local file to operate and should not be used to query other system/service except for system 'Game'
+
+### MsdoBot Main Api

@@ -1,5 +1,15 @@
 # Deployment
 
+## Pre-requirement
+
+Make sure `docker`, `docker-compose` is installed and available
+
+Make sure `maven` is installed and available
+
+If you want to use manual deployment method, make sure `Rasa` is installed and available
+
+> Installation guideline of Rasa can be found [HERE](https://rasa.com/docs/rasa/installation/).
+
 ## Preparation
 
 Click [HERE](https://youtu.be/0EUTE8R4EU8) to see video guide.

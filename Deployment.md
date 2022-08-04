@@ -149,7 +149,11 @@ java -Dspring.profiles.active=<your-profile> -jar app.jar
 
 #### Set Up
 
-- check rasa service
+- check if rasa configurations
+  - nlu.yml
+  - domain.yml
+  - stories.yml
+  - etc
 - check MsdoBot properties settings
   - build MsdoBot with target property profiles
 

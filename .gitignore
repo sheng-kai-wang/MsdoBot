@@ -49,3 +49,4 @@ build/
 .rasa
 *.pyc
 story_graph.dot
+MsdoBot/app.jar

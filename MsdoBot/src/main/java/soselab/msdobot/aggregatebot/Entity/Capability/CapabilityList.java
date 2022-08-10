@@ -38,7 +38,12 @@ public class CapabilityList {
         }
         return new ArrayList<>();
     }
-
+    
+    /**
+     * get complete capability data list in upper intent capability list
+     * @param semiCapabilityList
+     * @return
+     */
     public ArrayList<Capability> getCompleteCapability(ArrayList<Capability> semiCapabilityList){
         ArrayList<Capability> resultList = new ArrayList<>();
         for(Capability semiCapability : semiCapabilityList){

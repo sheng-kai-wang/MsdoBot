@@ -1,51 +1,54 @@
-- name: record-analyze
-  context: general
-  isAggregateMethod: false
-  accessLevel: service
-  description: analyze access record in specific time zone
-  method: POST
-  atomicIntent: check-record-time
-  apiEndpoint: http://check-record-time
-  input:
-    # AnalysisData.accessTRecord
-    - AnalysisData.accessRecord
-    - timeZone
-  output:
-    type: json
-    # type: aggregate
-    jsonInfo:
-      - jsonPath: $.status
-        description: access record
-        dataLabel: accessRecord
-  usedMappingList:
-    - mappingName: timeZone
-      description: target time zone
-      schema: "{start: %{Time.startTime}, end: %{Time.endTime}}"
-- name: access-record
-  context: general
-  isAggregateMethod: false
-  accessLevel: service
-  description: search user access recor
-  method: POST
-  atomicIntent: check-user-access
-  apiEndpoint: http://check-user-access
-  input:
-    - User.username
-    - Api.serviceName
-  output:
-    type: json
-    jsonInfo:
-      - jsonPath: $.record
-        dataLabel: accessRecord
-        description: access record
-  storedData:
-    input:
-      - from: Api.serviceName
-        to: Api.serviceName
-        addToGlobal: true
-    output:
-      - from: accessRecord
-        to: AnalysisData.accessRecord
+# # old capability, unused
+# - name: record-analyze
+#   context: general
+#   isAggregateMethod: false
+#   accessLevel: service
+#   description: analyze access record in specific time zone
+#   method: POST
+#   atomicIntent: check-record-time
+#   apiEndpoint: http://check-record-time
+#   input:
+#     # AnalysisData.accessTRecord
+#     - AnalysisData.accessRecord
+#     - timeZone
+#   output:
+#     type: json
+#     # type: aggregate
+#     jsonInfo:
+#       - jsonPath: $.status
+#         description: access record
+#         dataLabel: accessRecord
+#   usedMappingList:
+#     - mappingName: timeZone
+#       description: target time zone
+#       schema: "{start: %{Time.startTime}, end: %{Time.endTime}}"
+# # old capability, unused
+# - name: access-record
+#   context: general
+#   isAggregateMethod: false
+#   accessLevel: service
+#   description: search user access recor
+#   method: POST
+#   atomicIntent: check-user-access
+#   apiEndpoint: http://check-user-access
+#   input:
+#     - User.username
+#     - Api.serviceName
+#   output:
+#     type: json
+#     jsonInfo:
+#       - jsonPath: $.record
+#         dataLabel: accessRecord
+#         description: access record
+#   storedData:
+#     input:
+#       - from: Api.serviceName
+#         to: Api.serviceName
+#         addToGlobal: true
+#     output:
+#       - from: accessRecord
+#         to: AnalysisData.accessRecord
+# Jenkins function: check jenkins health status
 - name: Jenkins-health
   context: jenkins
   isAggregateMethod: false
@@ -72,6 +75,7 @@
     output:
       - from: healthSummary
         to: AnalysisData.healthData
+# Jenkins function: check jenkins test report
 - name: Jenkins-test-report
   context: jenkins
   isAggregateMethod: false
@@ -98,6 +102,7 @@
       - from: Api.serviceName
         to: Api.serviceName
         addToGlobal: true
+# Jenkins function: check jenkins latest build number
 - name: Jenkins-latest-build-number
   context: jenkins
   isAggregateMethod: false
@@ -126,6 +131,7 @@
     output:
       - from: buildNumber
         to: Api.buildNumber
+# Jenkins function: check jenkins test report with given build number
 - name: Jenkins-semi-test-report
   context: jenkins
   isAggregateMethod: false
@@ -152,6 +158,7 @@
       - from: Api.serviceName
         to: Api.serviceName
         addToGlobal: true
+# Jenkins function: check jenkins git information
 - name: Jenkins-semi-git-info
   context: jenkins
   isAggregateMethod: false
@@ -184,6 +191,7 @@
       - from: Api.serviceName
         to: Api.serviceName
         addToGlobal: true
+# Jenkins function: check jenkins view list
 - name: Jenkins-view-list
   context: jenkins
   isAggregateMethod: false
@@ -201,31 +209,34 @@
     - mappingName: jenkinsInfo
       description: basic jenkins information
       schema: "{name: %{User.username}, token: %{Api.accessToken}, url: %{Api.endpoint}}"
-- name: Fake-test-capability
-  context: general
-  isAggregateMethod: false
-  accessLevel: service
-  description: try to use get method with request param
-  method: GET
-  atomicIntent: get_this
-  apiEndpoint: http://localhost:8888/capability/fake
-  input:
-    - User.username
-    - Api.accessToken
-  output:
-    type: plainText
-- name: Fake-capability-pathvariable
-  context: general
-  isAggregateMethod: false
-  accessLevel: service
-  description: try to use get method with path variable
-  method: GET
-  atomicIntent: get_path
-  apiEndpoint: http://localhost:8888/capability/fake-variable/{User-username}
-  input:
-    - User-username
-  output:
-    type: plainText
+# # fake api, testing purpose
+# - name: Fake-test-capability
+#   context: general
+#   isAggregateMethod: false
+#   accessLevel: service
+#   description: try to use get method with request param
+#   method: GET
+#   atomicIntent: get_this
+#   apiEndpoint: http://localhost:8888/capability/fake
+#   input:
+#     - User.username
+#     - Api.accessToken
+#   output:
+#     type: plainText
+# # fake api, testing purpose
+# - name: Fake-capability-pathvariable
+#   context: general
+#   isAggregateMethod: false
+#   accessLevel: service
+#   description: try to use get method with path variable
+#   method: GET
+#   atomicIntent: get_path
+#   apiEndpoint: http://localhost:8888/capability/fake-variable/{User-username}
+#   input:
+#     - User-username
+#   output:
+#     type: plainText
+# invalid format api, should be remove by config loader automaticially
 - name: illegal-capability
   context: general
   isAggregateMethod: false
@@ -240,6 +251,7 @@
   output:
     type: plainText
 # aggregate capability config example
+# this capability is ONLY used to show the aggregate-capability configuration format
 - name: full-example-of-aggregate-capability
   context: general
   isAggregateMethod: true
@@ -295,6 +307,7 @@
           property:
             - User.username
 # rendering capability example
+# this capability is ONLY used to show the rendering-capability configuration format
 - name: rendering example
   # determine whether this capability is a rendering capability
   isRenderingMethod: true
@@ -359,7 +372,7 @@
   apiEndpoint: http://localhost:8088/serviceApiDetail
   input:
     - Api.serviceName
-#    - Api.accessToken
+  #    - Api.accessToken
   output:
     type: plainText
     dataLabel: apiInfo
@@ -762,14 +775,14 @@
   output:
   renderingDetail:
     dataSource:
-#      - useAs: errorTimeZone
-#        isAggregationData: true
-#        aggregationLevel: service
-#        aggregateDataComponent:
-#          context:
-#            - pseudoServiceInfo
-#          property:
-#            - Data.errorLog
+      #      - useAs: errorTimeZone
+      #        isAggregationData: true
+      #        aggregationLevel: service
+      #        aggregateDataComponent:
+      #          context:
+      #            - pseudoServiceInfo
+      #          property:
+      #            - Data.errorLog
       - useAs: swaggerApiList
         isAggregationData: false
         context: swagger

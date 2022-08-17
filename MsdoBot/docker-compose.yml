@@ -4,16 +4,18 @@ services:
   msdobot:
     image: msdobot/msdobot:v1
     container_name: msdobot
-    restart: always
+    restart: on-failure
     networks: ["msdobot"]
     depends_on:
       - rabbitmq
       - outer_api
+    links:
+      - rabbitmq
     ports:
       - 8888:8888
 
   rabbitmq:
-    image: rabbitmq:3-management
+    image: msdobot/rabbitmq:v1
     container_name: msdobot-rabbitmq
     restart: always
     networks: ["msdobot"]
@@ -23,6 +25,11 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   outer_api:
     image: msdobot/outer:v0

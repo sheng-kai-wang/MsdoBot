@@ -1,4 +1,4 @@
-# MsdoBot
+# MsdoBot-Rasa
 
 > Microservice Development and Operation Bot - MsdoBot
 
